@@ -1,0 +1,53 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.columns {
+    display: none;
+    background-color: $table-header-background;
+
+    @include tablet {
+        display: flex;
+        padding: 0 2rem;
+    }
+
+    @include desktop {
+        padding: .0 2.3rem;
+    }
+    
+    &__column {
+        display: flex;
+    }
+
+    &__title {
+        font-size: 0.75rem;
+        margin: .65rem 0;
+    }
+
+    &__sort-icon {
+        width: 1.2rem;
+        margin-left: .25rem;
+    }
+    
+    &__item {
+        width: 25%;
+    }
+
+    &__category {
+        width: 15%;
+    }
+
+    &__status {
+        width: 30%;
+        padding: 0 1.25rem;
+    }
+
+    &__qty {
+        width: 21%;
+    }
+
+    &__actions {
+        width: 9%;
+        justify-content: end;
+    }
+}

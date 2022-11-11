@@ -1,0 +1,156 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/error";
+@use "../../styles/partials/button";
+
+
+.inventory-form {
+    &__header {
+        flex-basis: 100%;
+        display: flex;
+        padding: 1.4rem 1.5rem;
+        border-bottom: 1px solid $outline-dividers-borders;
+        margin-bottom: .5rem;
+        align-items: baseline;
+        @include tablet {
+            margin-bottom: 1rem;
+            padding: 2.5rem 2rem 1rem 2rem;
+        }
+    }
+    &__back {
+        margin-right: .25rem;
+        transform: translate(-4px, 2px);
+        cursor: pointer;
+
+        @include tablet {
+            margin-right: 1rem;
+        }
+    }
+    &__title {
+        margin: 0;
+    }
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__section {
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        @include tablet {
+            flex-basis: 50%;
+        }
+        &--left {
+            border-bottom: 1px solid $outline-dividers-borders;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            @include tablet {
+                padding: 0 2rem;
+                border-right: 1px solid $outline-dividers-borders;
+                border-bottom: none;
+            }
+        }
+    }
+    &__subtitle {
+        margin-top: 0;
+        @include tablet {
+            margin-top: 1rem;
+        }
+        @include desktop {
+            margin-top: .5rem;
+        }
+    }
+    &__label {
+        margin: .5rem 0;
+        display: flex;
+        flex-direction: column;
+        @include labels;
+        @include tablet {
+            margin: 1rem 0;
+        }
+    }
+    &__input {
+        padding: .5rem 1rem;
+        margin-top: .25rem;
+        border-radius: 1.25rem;
+        outline: none;
+        border: 1px solid $outline-dividers-borders;
+        font-family: $titillium-web;            
+        @include body-medium;
+        &:focus {
+            border-color: $inactive;
+        }
+        &--textarea {
+            resize: none;
+            height: 6rem;
+            @include tablet {
+                height: 8rem;
+            }
+        }
+        &--select {
+            color: $place-holder;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            &::-ms-expand {
+                display: none;
+           }
+            background-image: url("../../assets/images/arrow_drop_down-24px.svg");
+            background-repeat: no-repeat;
+            background-position: 95% 50%;
+        }
+        &--quantity {
+            @include tablet {
+                width: 30%;
+                &::-webkit-inner-spin-button{
+                    -webkit-appearance: none;
+                    margin: 0;
+                }    
+            }
+        }
+        &--error {
+            border: 1px solid $error-state;
+        }
+    }
+    &__radio {
+        margin-right: .5rem;
+        transform: translateY(2px);
+    }
+    &__radio-label {
+        @include body-medium;
+        margin-right: 2rem;
+    }
+
+    &__footer {
+        flex-basis: 100%;
+        background-color: $page-background;
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+        @include tablet {
+            padding: 1rem 2rem;
+            margin-top: .5rem;
+        }
+    }
+    &__success {
+        @include body-small;
+        color: $in-stock-label;
+        flex-basis: 100%;
+        justify-self: flex-end;
+        text-align: center;
+        font-style: italic;
+        margin: .5rem;
+        @include tablet {
+            text-align: end;
+        }
+        &--error{
+            color: $out-of-stock-label
+        }
+    }
+
+}

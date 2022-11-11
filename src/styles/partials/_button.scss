@@ -1,0 +1,43 @@
+@use "./typography"as*;
+@use "./mixins"as*;
+@use "./typography"as*;
+@use "./variables"as*;
+
+.button{
+    cursor: pointer;
+    @include buttons;
+    border-radius: 1.25rem;
+    background-color: $inactive;
+    border: none;
+    color: $primary-background;
+    padding: .25rem 1rem;
+    flex-grow:1;
+    @include tablet {
+        flex-grow: 0;
+    }
+    &--primary{
+        &:hover{
+            background-color: $cta-hover;
+        }
+    }
+    &--cancel{
+        text-decoration: none;
+        background-color: $primary-background;
+        border: 1px solid $outline-dividers-borders;
+        color: $table-header;
+        margin-right: 1rem;
+        text-align: center;
+
+        &:hover {
+            color: $inactive;
+            border: 1px solid $inactive; 
+        }
+    }
+    &--delete{
+        background-color: $delete;
+        &:hover{
+            background-color: $cta-hover;
+        }
+
+    }
+}

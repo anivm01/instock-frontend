@@ -1,0 +1,315 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouse {
+  &__title{
+    margin: 0;
+
+    @include tablet {
+      margin-right: auto;
+    }
+  }
+  &__form {
+    width: 100%;
+
+    @include tablet {
+        width: 55%;
+        margin-right: 1rem;
+    }
+}
+
+  &__link {
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  &__header {
+    padding: 1rem 1.5rem 0;
+    border-bottom: 1px solid $outline-dividers-borders;
+    @include tablet {
+      padding: 2rem 2rem 1.5rem 2rem;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      border: none;
+    }
+    @include desktop {
+      padding: 2rem 2.3rem 1rem;
+      
+    }
+
+    &-formbtn {
+      @include tablet {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        width: 65%;
+      }
+    }
+
+    
+
+    &-input {
+      width: 100%;
+      padding: 0.4rem 1rem;
+      border-radius: 1.25rem;
+      outline: none;
+      border: 1px solid $outline-dividers-borders;
+      font-family: $titillium-web;
+      background-image: url("../../assets/images/search-24px.svg");
+      background-repeat: no-repeat;
+      background-position: center right 5%;
+      margin: 1.25rem 0 1rem;
+
+      @include body-medium;
+      &:focus {
+        border-color: $inactive;
+      }
+
+      @include tablet {
+        margin: 0;
+        padding: 0.5rem 1rem;
+
+      }
+      @include desktop {
+        width: 20rem;
+        margin-right: 1rem;
+      }
+    }
+
+    &-button {
+      width: 100%;
+      @include buttons;
+      border-radius: 1.25rem;
+      background-color: $inactive;
+      border: none;
+      margin-bottom: 1rem;
+      color: $primary-background;
+      padding: 0.4rem 1rem;
+      flex-basis: 50%;
+      cursor: pointer;
+      @include tablet {
+        min-width: fit-content;
+        margin: 0;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    &-button:hover {
+      background-color: $cta-hover;
+    }
+  }
+
+  
+
+  &__subheaders {
+    display: none;
+    @include tablet {
+      display: flex;
+      width: 100%;
+      padding: 0.65rem 2rem;
+
+      background-color: $table-header-background;
+    }
+  }
+
+  &__subheader {
+    width: 100%;
+
+    @include tablet {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &-text {
+      @include tablet {
+        display: flex;
+        margin: 0;
+      }
+    }
+
+    &-arrows {
+      width: 1rem;
+      @include tablet {
+        margin-left: 0.25rem;
+        width: 1.2rem;
+      }
+    }
+
+    &-icons {
+      @include tablet {
+        width: 8%;
+        padding-left: 0;
+      }
+    }
+
+    &--info {
+      width: 25%;
+    }
+    
+  }
+
+  &__card {
+    border-bottom: 1px solid $outline-dividers-borders;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem 1.5rem 0;
+    @include body-small;
+
+    @include tablet {
+      padding: 1rem 2rem;
+      align-items: center;
+      height: 6.5rem;
+    }
+
+    &:last-child{
+      border: none;
+    }
+      
+    
+
+
+    &-title {
+      margin-bottom: 0.2rem;
+      margin-top: 0.5rem;
+      font-size: 0.6rem;
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-info {
+      margin: 0;
+      width: 70%;
+    }
+
+    &-link {
+      color: $inactive;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+    }
+    &-link:hover {
+      text-decoration: underline;
+    }
+
+    &-arrow {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    &-item {
+      width: 50%;
+      margin-bottom: 0.5rem;
+      @include tablet {
+        margin-bottom: 0;
+      }
+      &--warehouse {
+        @include tablet {
+          order: 0;
+          width: 23%;
+        }
+      }
+
+      &--address {
+        @include tablet {
+          order: 1;
+          width: 19%;;
+        }
+      }
+
+      &--contact {
+        @include tablet {
+          order: 2;
+          width: 23%;
+        }
+      }
+      &--info {
+        @include tablet {
+          order: 3;
+          width: 27%;
+        }
+      }
+      &--icons {
+        @include tablet {
+          order: 4;
+        }
+      }
+    }
+
+    &-icons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0 1rem;
+      @include tablet {
+        justify-content: right;
+        align-items: center;
+        width: 8%;
+        padding: 0;
+      }
+    }
+    &-icon {
+      width: 1.2rem;
+
+      @include tablet {
+        width: 1.4rem;
+        margin-left: 1rem;
+      }
+    }
+    &-icon:hover {
+       cursor: pointer;
+      }
+
+    
+  }
+
+  &__card:hover {
+    @include desktop {
+      background-color: $cta-background;
+    }
+  }
+
+  &__name {
+    @include tablet {
+      width: 23%;
+    }
+  }
+
+  &__address {
+    @include tablet {
+      width: 19%;
+    }
+  }
+
+  &__contact-name {
+    @include tablet {
+      width: 23%;
+    }
+  }
+
+  &__contact-info {
+    @include tablet {
+      width: 27%;
+    }
+  }
+
+  &__actions {
+    @include tablet {
+      width: 8%;
+      justify-content: end;
+    }
+  }
+
+  &__actions-text {
+    width: auto;
+
+  }
+
+}

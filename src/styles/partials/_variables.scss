@@ -1,0 +1,32 @@
+
+/* responsive breakpoints*/
+$breakpoint-tablet: 767px;
+$breakpoint-desktop: 1280px;
+
+/* Font-Family*/
+$titillium-web: 'Titillium Web', sans-serif;
+
+
+/*Primary Colors*/
+$primary-text: #13182C;
+$inactive: #2E66E5;
+$primary-background:#FFFFFF;
+
+/*Secondary Colors*/
+$table-header: #5C667E;
+$place-holder:#5C667E;
+$outline-dividers-borders: #BDC5D5;
+
+/*Background Colors*/
+$header-background:#24293E;
+$header-hover-background:#14182B;
+$cta-hover:#232940;
+$page-background:#F7F8F9;
+$table-header-background:#F7F8F9;
+$cta-background:#F7F8F9;
+
+/* Supporting Colors*/
+$in-stock-label: #158463;
+$out-of-stock-label:#C94515;
+$error-state:#C94515;
+$delete:#C94515;

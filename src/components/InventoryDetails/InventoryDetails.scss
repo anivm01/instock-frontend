@@ -1,0 +1,156 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+
+.inventory-details {
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 1.5rem 1rem;
+
+        @include tablet {
+            padding: 2rem 2rem 1.2rem;
+        }
+
+        @include desktop {
+            padding: 2rem 2.3rem 1.2rem;
+        }
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &__icon {
+        transform: translate(-4px, 5px);
+        cursor: pointer;
+    }
+
+    &__title {
+        margin: 0;
+        margin-left: .2rem
+    }
+
+    &__edit-button {
+        @include buttons;
+        background: url(../../assets/images/edit-white.svg) no-repeat scroll 0.625rem 0.625rem;
+        background-size: 1rem;
+        background-color: $inactive;
+        width: 2.25rem;
+        height: 2.25rem;
+        border: 0;
+        border-radius: 20px;
+        color: $primary-background;
+        padding-left: 1.5rem;
+        cursor: pointer;
+        &:hover {
+            background-color: $cta-hover;
+        }
+
+        @include tablet {
+            width: 5rem;
+            height: 2.375rem;
+            background-position: 1rem;
+        }
+
+        @include desktop {}
+    }
+
+    &__bottom {
+        padding: 0 1.5rem;
+        border-top: 1px solid $outline-dividers-borders;
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid $outline-dividers-borders;
+
+        @include tablet {
+            border-bottom: 0;
+            padding: 1rem 2rem;
+            align-items: center;
+        }
+
+        @include desktop {
+            padding: 1.5rem 2.3rem;
+        }
+    }
+
+    &__info-left {
+        @include tablet {
+            width: 50%;
+        }
+    }
+
+    &__category,
+    &__description {
+        width: 100%;
+        @include tablet {
+            padding-bottom: 1.5rem;
+        }
+
+    }
+    &__content {
+        @include body-small;
+        margin: 0;
+
+        @include tablet {
+            @include body-medium;
+            margin-bottom: .2rem;
+        }
+    }
+
+    &__description-text {
+        @include tablet {
+            width: 85%;
+            
+        }
+    }
+
+    &__info-right {
+        display: flex;
+        flex-wrap: wrap; 
+        width: 100%;
+        margin-bottom: 1rem;
+        @include tablet {
+            width: 50%;
+            padding-left: 2.5rem;
+            border-left: 1px solid $outline-dividers-borders;
+            margin-bottom: 0;
+        }
+    }
+
+    &__status, 
+    &__quantity, 
+    &__warehouse {
+        width: 50%;
+        @include tablet {
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    &__quantity {
+        padding-left: .5rem;
+    }
+    &__in-stock {
+        @include in-stock;
+    }
+    &__out-of-stock {
+        @include out-of-stock;
+    }
+
+    &__label {
+        margin-bottom: 0.25rem;
+        font-size: 0.6rem;
+
+        @include tablet {
+            font-size: 0.75rem;
+            margin: 0 0 .5rem;
+        }
+    }
+
+  
+}

@@ -1,0 +1,102 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.header {
+    height: 11rem;
+    background-color: $header-background;
+    padding: 0 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    // z-index: -1;
+    @include tablet {
+        flex-wrap: nowrap;
+        padding: 1rem 0 0 0;
+        height: 12rem;
+    }
+    @include desktop {
+        height: 12.2rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @include tablet {
+            justify-content: space-between;
+        }
+
+        @include desktop {
+            max-width: 63.75rem;
+            margin: auto;
+        }
+    }
+
+    &__link {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 2rem;
+
+        @include tablet {
+            width: auto;
+            text-align: left;
+            margin: 1rem 2rem;
+        }
+        @include desktop {
+            margin-left: 0;
+        }
+    }
+
+    &__nav {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+
+
+        @include tablet {
+            width: auto;
+            align-items: center;
+            margin-right: 2rem;
+        }
+        @include desktop {
+            margin: 0;
+        }
+
+        //align-items: center;
+    }
+
+    &__link-nav {
+        width: 50%;
+        text-align: center;
+        text-decoration: none;
+        color: $table-header;
+        border-radius: 24px;
+        padding: 8px 0;
+        @include buttons;
+        flex-grow: 1;
+        @include tablet {
+            width: auto;
+            padding: .5rem 1rem;
+            margin-left: 1rem;
+        }
+    }
+
+    &__link-nav:hover {
+        background-color: $header-hover-background;
+    }
+
+    &__logo {
+        height: 1.5rem;
+        @include tablet {
+            height: 2rem;
+        }
+    }
+}
+
+.active {
+    color: $primary-background;
+    background-color: $header-hover-background;
+}

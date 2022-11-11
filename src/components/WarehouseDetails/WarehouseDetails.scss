@@ -1,0 +1,139 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/button" as *;
+
+
+.warehouse-details {
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 1.5rem 1rem;  
+        
+        @include tablet {
+            padding: 2rem 2rem 1.2rem;
+        }
+
+        @include desktop {
+            padding: 2rem 2.3rem 1.2rem;
+        }
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &__icon {
+        transform: translate(-4px, 5px);
+        cursor: pointer;
+    }
+
+    &__title {
+        margin: 0;
+        margin-left: .2rem
+    }
+
+    &__edit-button {
+        @include buttons;
+        background: url(../../assets/images/edit-white.svg) no-repeat scroll 0.625rem 0.625rem;
+        background-size: 1rem;
+        background-color: $inactive;
+        width: 2.25rem;
+        height: 2.25rem;
+        border: 0;
+        border-radius: 20px;
+        color: $primary-background;
+        padding-left: 1.5rem;
+        cursor: pointer;
+
+        @include tablet {
+            width: 5rem;
+            height: 2.375rem;
+            background-position: 1rem;
+        }
+
+        @include desktop {
+            
+        }
+    }
+
+    &__bottom {
+        padding: 0 1.5rem;
+        border-top: 1px solid $outline-dividers-borders;
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid $outline-dividers-borders;
+
+        @include tablet {
+            border-bottom: 0;
+            padding: 0 2rem;
+        }
+
+        @include desktop {
+            padding: 0 2.3rem;
+        }
+    }
+
+    &__contacts-left, &__contacts-right, &__address {
+        @include tablet {
+            margin: 1.5rem 0;
+        }
+    }
+
+    &__address {
+        flex-basis: 100%;
+        @include tablet {
+            flex-basis: 40%;
+            border-right: 1px solid $outline-dividers-borders;
+        }
+    }
+
+    &__contacts-left, &__contacts-right{
+        flex-basis: 50%;
+        padding: 1rem 0;
+
+
+        @include tablet {
+            flex-basis: 30%;
+            padding: 0;
+        }
+    }
+
+    &__contacts-left {
+        @include tablet {
+            padding-left: 2.5rem;
+        }
+    }
+
+    &__contacts-right {
+        padding-left: .5rem;
+
+        @include tablet {
+            padding-left: 0;
+        }
+    }
+
+    &__label {
+       margin-bottom: 0.25rem;
+       font-size: 0.6rem;
+
+       @include tablet {
+            font-size: 0.75rem;
+            margin: 0 0 .5rem;
+       }
+    }
+
+    &__content {
+        @include body-small;
+        margin: 0;
+
+        @include tablet {
+            @include body-medium;
+            margin-bottom: .2rem;
+        }
+    }
+}
