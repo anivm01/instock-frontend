@@ -43,17 +43,17 @@ function EditWarehouse() {
   //api call to populate fields with the selected warehouse information
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/warehouses/warehouse/${id}`)
+      .get(`http://localhost:8080/warehouses/${id}`)
       .then((response) => {
         setSelectedWarehouse(response.data);
-        setName(response.data.name);
+        setName(response.data.warehouse_name);
         setAddress(response.data.address);
         setCity(response.data.city);
         setCountry(response.data.country);
-        setManagerName(response.data.contact.name);
-        setManagerPosition(response.data.contact.position);
-        setManagerPhone(response.data.contact.phone);
-        setManagerEmail(response.data.contact.email);
+        setManagerName(response.data.contact_name);
+        setManagerPosition(response.data.contact_position);
+        setManagerPhone(response.data.contact_phone);
+        setManagerEmail(response.data.contact_email);
       })
       .catch((error) => {
         console.log(error);
@@ -132,16 +132,14 @@ function EditWarehouse() {
 
   //created new warehouse object to send back to the backend
   const newWarehouse = {
-    name: name,
+    warehouse_name: name,
     address: address,
     city: city,
     country: country,
-    contact: {
-      name: managerName,
-      position: managerPosition,
-      phone: managerPhone,
-      email: managerEmail,
-    },
+    contact_name: managerName,
+    contact_position: managerPosition,
+    contact_phone: managerPhone,
+    contact_email: managerEmail
   };
 
   //function to handle form submission
@@ -174,7 +172,7 @@ function EditWarehouse() {
     }
 
     axios
-      .put(API_URL + "/warehouses/warehouse/" + id, newWarehouse)
+      .put(API_URL + "/warehouses/" + id, newWarehouse)
       .then(() => {
         setSuccess(true);
         setTimeout(() => {
@@ -373,7 +371,7 @@ function EditWarehouse() {
             type="submit"
             className="newWarehouse-form__button button button--primary"
           >
-            + Add Warehouse
+            + Edit Warehouse
           </button>
         </footer>
       </form>

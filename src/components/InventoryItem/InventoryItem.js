@@ -38,7 +38,7 @@ function InventoryItem({ inventory, i, inventoryId, reload, setReload }) {
           to={`/inventory/inventory/${inventoryId}`}
           className="item__item-name item__title-container"
         >
-          <p className="item__content item__title ">{inventory.itemName}</p>
+          <p className="item__content item__title ">{inventory.item_name}</p>
           <img
             src={ArrowRight}
             alt="Right arrow"

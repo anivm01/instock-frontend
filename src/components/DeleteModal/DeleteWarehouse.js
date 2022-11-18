@@ -9,7 +9,7 @@ function DeleteWarehouse({ warehouseName, warehouseId, handleCloseModal }) {
                     const [success, setSuccess] = useState("")
                     const [error, setError] = useState("")
     const handleDelete = (event) => {
-        axios.delete(API_URL + `/warehouses/warehouse/${warehouseId}`).then((response) => {
+        axios.delete(API_URL + `/warehouses/${warehouseId}`).then((response) => {
             setSuccess("The Warehouse Was Deleted Successfully!")
 
         }).catch((error)=> {

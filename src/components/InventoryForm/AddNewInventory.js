@@ -7,7 +7,9 @@ import "./InventoryForm.scss";
 
 function AddNewInventory() {
   //create states to dynamically generate warehouse names list and categories list
-  const [warehouseNames, setWarehouseNames] = useState([]);
+  const [warehouses, setWarehouses] = useState([]);
+  const warehouseNames = warehouses.map((warehouse)=>{return warehouse.warehouse_name})
+
   const [inventoryCategories, setInventoryCategories] = useState([]);
 
   //create states to control the form elements
@@ -33,13 +35,14 @@ function AddNewInventory() {
   //call the warehouse names and the inventory categories from the api
   useEffect(() => {
     axios
-      .get("http://localhost:8080/warehouses/names")
+      .get("http://localhost:8080/warehouses")
       .then((response) => {
-        setWarehouseNames(response.data);
+        setWarehouses(response.data);
         return axios.get("http://localhost:8080/inventories/categories");
       })
       .then((response) => {
-        setInventoryCategories(response.data);
+        const categoriesData = response.data.map((category)=>{return category.category})
+        setInventoryCategories(categoriesData);
       })
       .catch((error) => {
         console.log(error);
@@ -123,27 +126,30 @@ function AddNewInventory() {
   //function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    const itemName = event.target.itemName.value;
+    const item_name = event.target.itemName.value;
     const description = event.target.description.value;
     const category = event.target.category.value;
     const warehouse = event.target.warehouse.value;
-    let status = null;
+    const warehouseObj = warehouses.find(single => single.warehouse_name === warehouse)
+    const warehouseId = warehouseObj.id
+    console.log(warehouseId)
+    let itemStatus = null;
     if (inStock) {
-      status = "In Stock";
+      itemStatus = "In Stock";
     }
     if (!inStock) {
-      status = "Out of Stock";
+      itemStatus = "Out of Stock";
     }
     const quantity = itemQuantity;
     if (
-      !itemName ||
+      !item_name ||
       !description ||
       category.length <= 0 ||
       warehouse.length <= 0 ||
-      !status ||
-      (quantity === 0 && status === "In Stock")
+      !itemStatus ||
+      (quantity === 0 && itemStatus === "In Stock")
     ) {
-      if (!itemName) {
+      if (!item_name) {
         setNameError(true);
       }
       if (!description) {
@@ -155,21 +161,22 @@ function AddNewInventory() {
       if (warehouse.length <= 0) {
         setWarehouseError(true);
       }
-      if (!status) {
+      if (!itemStatus) {
         setStatusError(true);
       }
-      if (quantity === 0 && status === "In Stock") {
+      if (quantity === 0 && itemStatus === "In Stock") {
         setQuantityError(true);
       }
       return;
     }
 
+
     const newInventoryItem = {
-      itemName: itemName,
+      item_name: item_name,
       description: description,
-      warehouseName: warehouse,
+      warehouse_id: warehouseId,
       category: category,
-      status: status,
+      status: itemStatus,
       quantity: quantity,
     };
     axios
@@ -181,6 +188,7 @@ function AddNewInventory() {
         }, 3000);
       })
       .catch((error) => {
+        console.log(error)
         setErrorMessage(error.response.data);
         if (errorMessage.length === 0) {
           setErrorMessage("Something went wrong. Try again!");
@@ -189,7 +197,7 @@ function AddNewInventory() {
   };
 
   //early return to wait for api call to come back
-  if (warehouseNames.length === 0 || inventoryCategories === 0) {
+  if (warehouses.length === 0 || inventoryCategories === 0) {
     return <h2>Loading...</h2>;
   }
 
@@ -260,8 +268,8 @@ function AddNewInventory() {
               <option className="inventory-form__default" value="">
                 Please Select
               </option>
-              {inventoryCategories.map((inventoryCategory) => (
-                <option key={inventoryCategory} value={inventoryCategory}>
+              {inventoryCategories.map((inventoryCategory, index) => (
+                <option key={index} value={inventoryCategory}>
                   {inventoryCategory}
                 </option>
               ))}
@@ -359,8 +367,8 @@ function AddNewInventory() {
               <option className="inventory-form__default" value="">
                 Please Select
               </option>
-              {warehouseNames.map((warehouseName) => (
-                <option key={warehouseName} value={warehouseName}>
+              {warehouseNames.map((warehouseName, index) => (
+                <option key={index} value={warehouseName}>
                   {warehouseName}
                 </option>
               ))}

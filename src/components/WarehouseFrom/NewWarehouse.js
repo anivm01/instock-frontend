@@ -109,16 +109,14 @@ function NewWarehouse() {
 
   //created new warehouse object to send back to the backend
   const newWarehouse = {
-    name: name,
+    warehouse_name: name,
     address: address,
     city: city,
     country: country,
-    contact: {
-      name: managerName,
-      position: managerPosition,
-      phone: managerPhone,
-      email: managerEmail,
-    },
+    contact_name: managerName,
+    contact_position: managerPosition,
+    contact_phone: managerPhone,
+    contact_email: managerEmail
   };
 
   //function to handle form submission

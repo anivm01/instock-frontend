@@ -38,7 +38,7 @@ function InventoryCard({ inventory, id, i, setReload, reload }) {
           to={`/inventory/inventory/${id}`}
           className="card__item-name card__title-container"
         >
-          <p className="card__content card__title ">{inventory.itemName}</p>
+          <p className="card__content card__title ">{inventory.item_name}</p>
           <img
             src={ArrowRight}
             alt="Right arrow"
@@ -69,7 +69,7 @@ function InventoryCard({ inventory, id, i, setReload, reload }) {
       <div className="card__key-pair card__empty"></div>
       <div className="card__key-pair card__right card__warehouse">
         <h4 className="card__label">Warehouse</h4>
-        <p className="card__content">{inventory.warehouseName}</p>
+        <p className="card__content">{inventory.warehouse_name}</p>
       </div>
       <div className="card__bottom">
         <div

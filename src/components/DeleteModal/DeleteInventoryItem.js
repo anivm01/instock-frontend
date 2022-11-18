@@ -9,7 +9,7 @@ function DeleteInventoryItem({inventoryItem, inventoryId, handleCloseModal}) {
     const [success, setSuccess] = useState("")
     const [error, setError] = useState("")
     const handleDelete = (event) => {
-        axios.delete(API_URL + `/inventories/inventory/${inventoryId}`).then((response) => {
+        axios.delete(API_URL + `/inventories/${inventoryId}`).then((response) => {
             setSuccess("The Item Was Deleted Successfully!")
         }).catch((error) => {
             console.log(error)

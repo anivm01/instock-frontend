@@ -7,7 +7,8 @@ import "./InventoryForm.scss";
 
 function EditInventory() {
   //create states to dynamically generate warehouse names list and categories list
-  const [warehouseNames, setWarehouseNames] = useState([]);
+  const [warehouses, setWarehouses] = useState([]);
+  const warehouseNames = warehouses.map((warehouse)=>{return warehouse.warehouse_name})
   const [inventoryCategories, setInventoryCategories] = useState([]);
 
   //create states to control the form elements
@@ -42,18 +43,19 @@ function EditInventory() {
   //call the warehouse names and the inventory categories from the api
   useEffect(() => {
     axios
-      .get("http://localhost:8080/warehouses/names")
-      .then((response) => {
-        setWarehouseNames(response.data);
+    .get("http://localhost:8080/warehouses")
+    .then((response) => {
+      setWarehouses(response.data);
         return axios.get("http://localhost:8080/inventories/categories");
       })
       .then((response) => {
-        setInventoryCategories(response.data);
-        return axios.get(`http://localhost:8080/inventories/inventory/${id}`);
+        const categoriesData = response.data.map((category)=>{return category.category})
+        setInventoryCategories(categoriesData);
+        return axios.get(`http://localhost:8080/inventories/${id}`);
       })
       .then((response) => {
         setItemToBeEdited(response.data);
-        setItemName(response.data.itemName);
+        setItemName(response.data.item_name);
         setItemDescription(response.data.description);
         setSelectedCategory(response.data.category);
         if (response.data.status === "In Stock") {
@@ -63,7 +65,7 @@ function EditInventory() {
           setInStock(false);
         }
         setItemQuantity(response.data.quantity);
-        setSelectedWarehouse(response.data.warehouseName);
+        setSelectedWarehouse(response.data.warehouse_name);
       })
       .catch((error) => {
         console.log(error);
@@ -149,6 +151,8 @@ function EditInventory() {
     const description = event.target.description.value;
     const category = event.target.category.value;
     const warehouse = event.target.warehouse.value;
+    const warehouseObj = warehouses.find(single => single.warehouse_name === warehouse)
+    const warehouseId = warehouseObj.id
     let status = null;
     if (inStock) {
       status = "In Stock";
@@ -187,16 +191,16 @@ function EditInventory() {
     }
 
     const newInventoryItem = {
-      itemName: itemName,
+      item_name: itemName,
       description: description,
-      warehouseName: warehouse,
+      warehouse_id: warehouseId,
       category: category,
       status: status,
       quantity: quantity,
     };
     axios
       .put(
-        `http://localhost:8080/inventories/inventory/${id}`,
+        `http://localhost:8080/inventories/${id}`,
         newInventoryItem
       )
       .then(() => {
@@ -292,8 +296,8 @@ function EditInventory() {
               <option className="inventory-form__default" value="">
                 Please Select
               </option>
-              {inventoryCategories.map((inventoryCategory) => (
-                <option key={inventoryCategory} value={inventoryCategory}>
+              {inventoryCategories.map((inventoryCategory, index) => (
+                <option key={index} value={inventoryCategory}>
                   {inventoryCategory}
                 </option>
               ))}
@@ -391,8 +395,8 @@ function EditInventory() {
               <option className="inventory-form__default" value="">
                 Please Select
               </option>
-              {warehouseNames.map((warehouseName) => (
-                <option key={warehouseName} value={warehouseName}>
+              {warehouseNames.map((warehouseName, index) => (
+                <option key={index} value={warehouseName}>
                   {warehouseName}
                 </option>
               ))}

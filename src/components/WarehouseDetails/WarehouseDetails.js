@@ -19,7 +19,7 @@ function WarehouseDetails() {
   //Retrieve data from API
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/warehouses/warehouse/${id}`)
+      .get(`http://localhost:8080/warehouses/${id}`)
       .then((response) => {
         const selectedWarehouse = response.data;
         setWarehouseDetails(selectedWarehouse);
@@ -79,19 +79,19 @@ function WarehouseDetails() {
         <div className="warehouse-details__contacts-left">
           <h4 className="warehouse-details__label">Contact name:</h4>
           <p className="warehouse-details__content">
-            {warehouseDetails.contact.name}
+            {warehouseDetails.contact_name}
           </p>
           <p className="warehouse-details__content">
-            {warehouseDetails.contact.position}
+            {warehouseDetails.contact_position}
           </p>
         </div>
         <div className="warehouse-details__contacts-right">
           <h4 className="warehouse-details__label">Contact information:</h4>
           <p className="warehouse-details__content">
-            {warehouseDetails.contact.phone}
+            {warehouseDetails.contact_phone}
           </p>
           <p className="warehouse-details__content">
-            {warehouseDetails.contact.email}
+            {warehouseDetails.contact_email}
           </p>
         </div>
       </div>

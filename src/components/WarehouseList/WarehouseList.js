@@ -36,83 +36,83 @@ function WarehouseList() {
 
   // --------------------trying to sort--------------------
 
-  function upOrDown() {
-    setSorted((current) => !current);
-  }
+  // function upOrDown() {
+  //   setSorted((current) => !current);
+  // }
 
-  function handleSortWarehouse() {
-    upOrDown();
-    if (sorted) {
-      const sortedByName = allWarehouses.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-      });
-      setAllWarehouses(sortedByName);
-    }
+  // function handleSortWarehouse() {
+  //   upOrDown();
+  //   if (sorted) {
+  //     const sortedByName = allWarehouses.sort((a, b) => {
+  //       if (a.name < b.name) {
+  //         return -1;
+  //       }
+  //       if (a.name > b.name) {
+  //         return 1;
+  //       }
+  //       return 0;
+  //     });
+  //     setAllWarehouses(sortedByName);
+  //   }
 
-    if (!sorted) {
-      const sortedByName = allWarehouses.sort((a, b) => {
-        if (a.name > b.name) {
-          return -1;
-        }
-        if (a.name < b.name) {
-          return 1;
-        }
-        return 0;
-      });
-      setAllWarehouses(sortedByName);
-    }
-  }
+  //   if (!sorted) {
+  //     const sortedByName = allWarehouses.sort((a, b) => {
+  //       if (a.name > b.name) {
+  //         return -1;
+  //       }
+  //       if (a.name < b.name) {
+  //         return 1;
+  //       }
+  //       return 0;
+  //     });
+  //     setAllWarehouses(sortedByName);
+  //   }
+  // }
 
-  function handleSortAddress() {
-    const sortedByName = allWarehouses.sort((a, b) => {
-      if (a.address < b.address) {
-        return -1;
-      }
-      if (a.address > b.address) {
-        return 1;
-      }
-      return 0;
-    });
+  // function handleSortAddress() {
+  //   const sortedByName = allWarehouses.sort((a, b) => {
+  //     if (a.address < b.address) {
+  //       return -1;
+  //     }
+  //     if (a.address > b.address) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
 
-    setAllWarehouses(sortedByName);
-    setSorted(sorted + 1);
-  }
+  //   setAllWarehouses(sortedByName);
+  //   setSorted(sorted + 1);
+  // }
 
-  function handleSortContactName() {
-    const sortedByName = allWarehouses.sort((a, b) => {
-      if (a.contact.name < b.contact.name) {
-        return -1;
-      }
-      if (a.contact.name > b.contact.name) {
-        return 1;
-      }
-      return 0;
-    });
+  // function handleSortContactName() {
+  //   const sortedByName = allWarehouses.sort((a, b) => {
+  //     if (a.contact.name < b.contact.name) {
+  //       return -1;
+  //     }
+  //     if (a.contact.name > b.contact.name) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
 
-    setAllWarehouses(sortedByName);
-    setSorted(sorted + 1);
-  }
+  //   setAllWarehouses(sortedByName);
+  //   setSorted(sorted + 1);
+  // }
 
-  function handleSortContactPhone() {
-    const sortedByName = allWarehouses.sort((a, b) => {
-      if (a.contact.email < b.contact.email) {
-        return -1;
-      }
-      if (a.contact.email > b.contact.email) {
-        return 1;
-      }
-      return 0;
-    });
-    setAllWarehouses(sortedByName);
-    setSorted(sorted + 1);
+  // function handleSortContactPhone() {
+  //   const sortedByName = allWarehouses.sort((a, b) => {
+  //     if (a.contact.email < b.contact.email) {
+  //       return -1;
+  //     }
+  //     if (a.contact.email > b.contact.email) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+  //   setAllWarehouses(sortedByName);
+  //   setSorted(sorted + 1);
  
-  }
+  // }
 
   // -----------------------------------------------------
 
@@ -147,7 +147,7 @@ function WarehouseList() {
           <h4 className="warehouse__subheader-text">
             WAREHOUSE{" "}
             <img
-              onClick={handleSortWarehouse}
+              //onClick={handleSortWarehouse}
               className="warehouse__subheader-arrows"
               src={sortArrows}
               alt="sorting arrows"
@@ -158,7 +158,7 @@ function WarehouseList() {
           <h4 className="warehouse__subheader-text">
             ADDRESS{" "}
             <img
-              onClick={handleSortAddress}
+              //onClick={handleSortAddress}
               className="warehouse__subheader-arrows"
               src={sortArrows}
               alt="sorting arrows"
@@ -169,7 +169,7 @@ function WarehouseList() {
           <h4 className="warehouse__subheader-text">
             CONTACT NAME{" "}
             <img
-              onClick={handleSortContactName}
+              //onClick={handleSortContactName}
               className="warehouse__subheader-arrows"
               src={sortArrows}
               alt="sorting arrows"
@@ -180,7 +180,7 @@ function WarehouseList() {
           <h4 className="warehouse__subheader-text">
             CONTACT INFORMATION{" "}
             <img
-              onClick={handleSortContactPhone}
+              //onClick={handleSortContactPhone}
               className="warehouse__subheader-arrows"
               src={sortArrows}
               alt="sorting arrows"
@@ -211,7 +211,7 @@ function WarehouseList() {
                   to={`/warehouses/warehouse/${warehouse.id}`}
                   className="warehouse__card-link warehouse__card-info"
                 >
-                  {warehouse.name}
+                  {warehouse.warehouse_name}
                   {
                     <img
                       className="warehouse__card-arrow"
@@ -224,7 +224,7 @@ function WarehouseList() {
 
               <div className="warehouse__card-item warehouse__card-item--contact">
                 <h4 className="warehouse__card-title">CONTACT NAME</h4>
-                <p className="warehouse__card-info">{warehouse.contact.name}</p>
+                <p className="warehouse__card-info">{warehouse.contact_name}</p>
               </div>
 
               <div className="warehouse__card-item warehouse__card-item--address">
@@ -237,16 +237,16 @@ function WarehouseList() {
               <div className="warehouse__card-item warehouse__card-item--info">
                 <h4 className="warehouse__card-title">CONTACT INFORMATION</h4>
                 <p className="warehouse__card-info">
-                  {warehouse.contact.phone}
+                  {warehouse.contact_phone}
                 </p>
                 <p className="warehouse__card-info">
-                  {warehouse.contact.email}
+                  {warehouse.contact_email}
                 </p>
               </div>
               <div className="warehouse__card-icons warehouse__card-item--icons">
                 <img
                   onClick={() => {
-                    handleClick(warehouse.name, warehouse.id);
+                    handleClick(warehouse.warehouse_name, warehouse.id);
                   }}
                   className="warehouse__card-icon"
                   src={deleteIcon}

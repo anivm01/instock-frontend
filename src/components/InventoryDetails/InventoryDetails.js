@@ -19,7 +19,7 @@ function InventoryDetails() {
   //Retrieve data from API
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/inventories/inventory/${id}`)
+      .get(`http://localhost:8080/inventories/${id}`)
       .then((response) => {
         const selectedInventory = response.data;
         setInventoryDetails(selectedInventory);
@@ -54,7 +54,7 @@ function InventoryDetails() {
             onClick={() => navigate(-1)}
           />
           <h1 className="inventory-details__title">
-            {inventoryDetails.itemName}
+            {inventoryDetails.item_name}
           </h1>
         </div>
         <Link to={`/inventory/edit/${id}`}>
@@ -102,7 +102,7 @@ function InventoryDetails() {
           <div className="inventory-details__warehouse">
             <h4 className="inventory-details__label">Warehouse:</h4>
             <p className="inventory-details__content">
-              {inventoryDetails.warehouseName}
+              {inventoryDetails.warehouse_name}
             </p>
           </div>
         </div>

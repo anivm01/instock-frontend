@@ -15,7 +15,7 @@ function WarehouseInventoryList() {
   //Retrieve data from API
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/inventories/warehouse/${id}`)
+      .get(`http://localhost:8080/warehouses/${id}/inventories`)
       .then((response) => {
         const inventories = response.data;
         setWarehouseInventory(inventories);
