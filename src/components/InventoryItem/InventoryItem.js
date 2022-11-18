@@ -69,7 +69,7 @@ function InventoryItem({ inventory, i, inventoryId, reload, setReload }) {
       <div className="item__bottom">
         <div
           onClick={() => {
-            handleClick(inventory.itemName, inventory.id);
+            handleClick(inventory.item_name, inventory.id);
           }}
           className="item__delete-container"
         >

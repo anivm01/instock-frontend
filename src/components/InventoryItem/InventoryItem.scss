@@ -143,6 +143,7 @@
 
     &__icon {
         width: 1.2rem;
+        cursor: pointer;
 
         @include tablet {
             width: 1.4rem;
